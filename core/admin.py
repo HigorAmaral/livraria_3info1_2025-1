@@ -35,11 +35,13 @@ class ItensCompraInline(admin.StackedInline):
 
 @admin.register(Compra)
 class CompraAdmin(admin.ModelAdmin):
-    list_display = ('usuario', 'status')
+    list_display = ('usuario', 'status', 'total_formatado')   
     ordering = ('usuario', 'status')
     list_per_page = 10
     inlines = [ItensCompraInline]
-
+    readonly_fields = ('total',)
+  
+ 
 
 @admin.register(Editora)
 class EditoraAdmin(admin.ModelAdmin):
